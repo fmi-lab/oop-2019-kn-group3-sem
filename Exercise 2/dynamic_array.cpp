@@ -55,6 +55,7 @@ public:
             size_v /= 2;
         }
     }
+
     void add_element(T element)
     {
         if((double)length_v / size_v > 0.8)
@@ -84,7 +85,7 @@ public:
         return true;
     }
 
-    double get_element_at(unsigned int pos)
+    T get_element_at(unsigned int pos)
     {
         return arr[pos];
     }
@@ -154,15 +155,15 @@ int main()
     }
 
 
-    cout<<endl<<v1.get_size()<<endl;
-    v1.set_element_at(100, v1.get_length());
+    v1.set_element_at(100, v1.get_length() - 1);
 
     for(int i = 0; i<v1.get_length(); i++)
     {
         cout<<setw(4)<<v1.get_element_at(i);
     }
+    cout<<endl<<v1.get_size()<<endl;
 
-    cout<<"*****************************"<<endl;
+    cout<<"\n*****************************\n";
 
 
     Vector<char> v2;
@@ -173,7 +174,7 @@ int main()
 
     for(int i = 0; i<v2.get_length(); i++)
     {
-        cout<<setw(3)<<v2.get_element_at(i);
+        cout<<setw(2)<<v2.get_element_at(i);
     }
 
 }
