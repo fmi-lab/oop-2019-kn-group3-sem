@@ -19,5 +19,7 @@ public:
     bool set_element_at(T element, unsigned int pos);
     unsigned int get_length();
     unsigned int get_size();
+
+    T operator[](unsigned int) const;
 };
 

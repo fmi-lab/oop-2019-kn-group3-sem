@@ -6,7 +6,7 @@
 using namespace std;
 
     template <typename T>
-    Vector<T>::Vector(unsigned int other_size = 20)
+    Vector<T>::Vector(unsigned int other_size)
     {
         arr = new T[other_size];
         assert(arr);
@@ -15,12 +15,14 @@ using namespace std;
         start_size = other_size;
     }
 
-    Vector::~Vector()
+    template <typename T>
+    Vector<T>::~Vector()
     {
         delete arr;
     }
 
-    void Vector::resize_v(bool direction)
+    template <typename T>
+    void Vector<T>::resize_v(bool direction)
     {
         T* other_arr;
         if(direction)
@@ -47,7 +49,8 @@ using namespace std;
         }
     }
 
-    void Vector::add_element(T element)
+    template <typename T>
+    void Vector<T>::add_element(T element)
     {
         if((double)length_v / size_v > 0.8)
         {
@@ -57,7 +60,8 @@ using namespace std;
         length_v ++;
     }
 
-    bool Vector::add_element_at(T element, unsigned int pos)
+    template <typename T>
+    bool Vector<T>::add_element_at(T element, unsigned int pos)
     {
         if(pos>length_v)
         {
@@ -76,12 +80,14 @@ using namespace std;
         return true;
     }
 
-    T Vector::get_element_at(unsigned int pos)
+    template <typename T>
+    T Vector<T>::get_element_at(unsigned int pos)
     {
         return arr[pos];
     }
 
-    bool Vector::delete_element_at(unsigned int pos)
+    template <typename T>
+    bool Vector<T>::delete_element_at(unsigned int pos)
     {
         if(pos>length_v)
         {
@@ -99,7 +105,8 @@ using namespace std;
         return true;
     }
 
-    bool Vector::set_element_at(T element, unsigned int pos){
+    template <typename T>
+    bool Vector<T>::set_element_at(T element, unsigned int pos){
         if(pos > length_v){
             return false;
         }
@@ -107,15 +114,35 @@ using namespace std;
         return true;
     }
 
-    unsigned int Vector::get_length()
+    template <typename T>
+    unsigned int Vector<T>::get_length()
     {
         return length_v;
     }
 
-    unsigned int Vector::get_size()
+    template <typename T>
+    unsigned int Vector<T>::get_size()
     {
         return size_v;
     }
+
+    template <typename T>
+    T Vector<T>::operator[](unsigned int pos) const{
+        return arr[pos];
+    }
+
 int main(){
+    Vector<int> v1;
+    Vector<char> v2;
+    Vector<Vector<double> > v3;
+
+    v1.add_element(5);
+    v1.add_element(4);
+    v1.add_element(7);
+    v1.add_element(51);
+    v1.add_element(24);
+    v1.add_element(-6);
+
+    cout<<v1[2];
 
 }

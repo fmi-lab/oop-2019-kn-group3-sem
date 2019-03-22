@@ -1,3 +1,4 @@
+#include<iostream>
 #include"processor.h"
 using namespace std;
 
@@ -16,4 +17,14 @@ Processor::Processor(const Processor& other): frequency(other.frequency){
 Processor& Processor::operator=(const Processor& other){
     cout<<"Processor::operator=\n";
     frequency = other.frequency;
+    return *this;
+}
+
+int main(){
+    Processor p1;
+    Processor p2( 5 );
+
+
+
+
 }
