@@ -14,11 +14,42 @@ using namespace std;
         size_v = other_size;
         start_size = other_size;
     }
+
+    template <typename T>
+    Vector<T>::Vector(const Vector<T>& other){
+        arr = new T[other.length_v * 2];
+        assert(arr);
+        size_v = other.length_v * 2;
+        start_size = size_v;
+        for(int i = 0; i<other.length_v; i++)
+        {
+            arr[i] = other[i];
+        }
+        length_v = other.length_v;
+    }
+
     template <typename T>
     Vector<T>::~Vector()
     {
         delete arr;
     }
+
+    template <typename T>
+    Vector<T>& Vector<T>::operator=(const Vector<T>& other){
+        if(this != &other){
+            if(this->arr){
+                delete this->arr;
+            }
+            this->arr = new T[other.length_v*2];
+            assert(this->arr);
+            for(int i = 0; i<other.length_v; i++){
+                this->arr[i] = other.arr[i];
+            }
+            length_v = other.length_v;
+        }
+        return *this;
+    }
+
     template <typename T>
     void Vector<T>::resize_v(bool direction)
     {
@@ -117,12 +148,12 @@ using namespace std;
         return size_v;
     }
     template <typename T>
-    T Vector<T>::operator[](unsigned int pos){
+    T& Vector<T>::operator[](unsigned int pos){
         cout<<"operator[]\n";
         return arr[pos];
     }
     template <typename T>
-    T& Vector<T>::operator[](unsigned int pos) const{
+    T Vector<T>::operator[](unsigned int pos) const{
 
         cout<<"operator[] const\n";
         return arr[pos];
@@ -140,10 +171,10 @@ int main(){
 
     const Vector<int> v2(v1);
 
-    v1[3];
-    v2[3] = 5;
+    v1[3] = 10; /// calls &T operator=(...)
+    /// v2[3] = 5; ERROR!
 
-    cout<<v2[3];
+    cout<<v2[3]; /// calls T operator=(...) const
 
 
 }

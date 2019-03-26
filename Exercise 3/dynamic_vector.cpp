@@ -16,9 +16,38 @@ using namespace std;
     }
 
     template <typename T>
+    Vector<T>::Vector(const Vector<T>& other){
+        arr = new T[other.length_v * 2];
+        assert(arr);
+        size_v = other.length_v * 2;
+        start_size = size_v;
+        for(int i = 0; i<other.length_v; i++)
+        {
+            arr[i] = other[i];
+        }
+        length_v = other.length_v;
+    }
+
+    template <typename T>
     Vector<T>::~Vector()
     {
-        delete arr;
+        delete[] arr;
+    }
+
+    template <typename T>
+    Vector<T>& Vector<T>::operator=(const Vector<T>& other){
+        if(this != &other){
+            if(this->arr){
+                delete[] this->arr;
+            }
+            this->arr = new T[other.length_v*2];
+            assert(this->arr);
+            for(int i = 0; i<other.length_v; i++){
+                this->arr[i] = other.arr[i];
+            }
+            length_v = other.length_v;
+        }
+        return *this;
     }
 
     template <typename T>
@@ -37,7 +66,7 @@ using namespace std;
         {
             other_arr[i] = arr[i];
         }
-        delete arr;
+        delete[] arr;
         arr = other_arr;
         if(direction)
         {
@@ -124,6 +153,11 @@ using namespace std;
     unsigned int Vector<T>::get_size()
     {
         return size_v;
+    }
+
+    template <typename T>
+    T& Vector<T>::operator[](unsigned int pos){
+        return arr[pos];
     }
 
     template <typename T>

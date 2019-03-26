@@ -10,7 +10,9 @@ private:
 
 public:
     Vector(unsigned int other_size = 20);
+    Vector(const Vector<T>&);
     ~Vector();
+    Vector<T>& operator=(const Vector<T>&);
     void resize_v(bool direction);
     void add_element(T element);
     bool add_element_at(T element, unsigned int pos);
@@ -20,7 +22,7 @@ public:
     unsigned int get_length();
     unsigned int get_size();
 
-    T operator[](unsigned int );
-
-    T& operator[](unsigned int )const ;
+    T& operator[](unsigned int );
+    T operator[](unsigned int) const;
 };
+

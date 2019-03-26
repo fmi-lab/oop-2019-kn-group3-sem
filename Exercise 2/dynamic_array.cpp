@@ -23,11 +23,37 @@ public:
         start_size = other_size;
     }
 
+    Vector(const Vector<T>& other){
+        arr = new T[other.length_v * 2];
+        assert(arr);
+        size_v = other.length_v * 2;
+        start_size = size_v;
+        for(int i = 0; i<other.length_v; i++)
+        {
+            arr[i] = other[i];
+        }
+        length_v = other.length_v;
+    }
+
     ~Vector()
     {
         delete arr;
     }
 
+    Vector<T>& operator=(const Vector<T>& other){
+        if(this != &other){
+            if(this->arr){
+                delete this->arr;
+            }
+            this->arr = new T[other.length_v*2];
+            assert(this->arr);
+            for(int i = 0; i<other.length_v; i++){
+                this->arr[i] = other.arr[i];
+            }
+            length_v = other.length_v;
+        }
+        return *this;
+    }
 
     void resize_v(bool direction)
     {
