@@ -141,7 +141,9 @@ int main(){
     const Vector<int> v2(v1);
 
     v1[3];
-    v2[3];
+    v2[3] = 5;
+
+    cout<<v2[3];
 
 
 }
