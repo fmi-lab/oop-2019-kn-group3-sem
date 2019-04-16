@@ -8,7 +8,7 @@ using namespace std;
 
 Person::Person(const char* name, const char* EGN, unsigned int age): age(age)
 {
-    cout<<"Person(...)\n";
+//    cout<<"Person(...)\n";
     this->name = new char[strlen(name) + 1];
     assert(this->name);
     strcpy(this->name, name);
@@ -17,7 +17,7 @@ Person::Person(const char* name, const char* EGN, unsigned int age): age(age)
 
 Person::Person(const Person& other): age(other.age)
 {
-    cout<<"Person(const Person&)\n";
+//    cout<<"Person(const Person&)\n";
     this->name = new char[strlen(other.name) + 1];
     assert(this->name);
     strcpy(this->name, other.name);
@@ -26,7 +26,7 @@ Person::Person(const Person& other): age(other.age)
 
 Person::~Person()
 {
-    cout<<"~Person()\n";
+//    cout<<"~Person()\n";
     if(this->name)
     {
         delete [] name;
@@ -36,7 +36,7 @@ Person::~Person()
 Person& Person::operator=(const Person& other)
 {
 
-    cout<<"Person::operator=(...)\n";
+//    cout<<"Person::operator=(...)\n";
     if(this != &other)
     {
         if(this->name){
@@ -52,6 +52,10 @@ Person& Person::operator=(const Person& other)
     {
         return *this;
     }
+}
+
+void Person::print() const{
+    cout<<"name: "<<name<<endl<<"EGN: "<<EGN<<endl<<"age: "<<age<<endl;
 }
 
 

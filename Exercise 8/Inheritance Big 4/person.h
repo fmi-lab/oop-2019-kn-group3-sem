@@ -11,4 +11,6 @@ public:
     Person(const Person&);
     ~Person();
     Person& operator=(const Person&);
+
+    void print() const;
 };
