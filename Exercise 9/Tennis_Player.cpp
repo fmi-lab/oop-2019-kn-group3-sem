@@ -24,7 +24,7 @@ void Tennis_Player::print_type()const
 
 Tennis_Player::Tennis_Player(const char* name, float height, const char* nick, unsigned int score): Player(name, height), season_score(score)
 {
-    cout<<"Tennis_Player()\n";
+//    cout<<"Tennis_Player()\n";
     nickname = new char[strlen(nick) + 1];
     assert(nickname);
     strcpy(nickname, nick);
@@ -39,7 +39,7 @@ Tennis_Player::Tennis_Player(const Tennis_Player& other): Player(other), season_
 
 Tennis_Player::~Tennis_Player()
 {
-    cout<<"~Tennis_Player()\n";
+//    cout<<"~Tennis_Player()\n";
     if(nickname != NULL)
     {
         delete[] nickname;
