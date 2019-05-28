@@ -27,7 +27,7 @@ void Player::print_type()const
 
 Player::Player(const char* name, float height): height(height)
 {
-    cout<<"Player()\n";
+//    cout<<"Player()\n";
     this->name = new char[strlen(name) + 1];
     assert(this->name);
     strcpy(this->name, name);
@@ -42,7 +42,7 @@ Player::Player(const Player& other): height(other.height)
 
 Player::~Player()
 {
-    cout<<"~Player()\n";
+//    cout<<"~Player()\n";
     if(name!=NULL)
     {
         delete[] name;
